@@ -3,6 +3,11 @@ import { Stack, useRouter } from "expo-router";
 import { Colors, Sizes } from "../constants/theme";
 import Search from "../components/search/search";
 import { useState } from "react";
+
+//TODO:
+// - Add shadow to themes and styles and not serparately
+// - Add types to searchResult in dynamic search page
+
 const Home = () => {
   const router = useRouter();
   const [searchTerm, setSearchTerm] = useState("book");

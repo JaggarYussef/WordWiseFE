@@ -12,8 +12,16 @@ import styles from "../../styles/style";
 import icons from "../../constants/icons";
 import { useRouter } from "expo-router";
 
-const Search = ({ searchTerm, setSearchTerm, handleClick }) => {
+//TODO What is the right wya of adding props here>?
+interface Props {
+  searchTerm: string;
+  setSearchTerm(): string; // NOT CORRECT DT
+  handleClick(): void;
+}
+
+const Search = ({ searchTerm, setSearchTerm, handleClick }: Props) => {
   const router = useRouter();
+  console.log("searchTerm", searchTerm);
 
   return (
     <View style={styles.container}>
@@ -21,8 +29,8 @@ const Search = ({ searchTerm, setSearchTerm, handleClick }) => {
         <View style={styles.searchWrapper}>
           <TextInput
             style={styles.searchInput}
-            value="book"
-            onChange={(word) => setSearchTerm(word)}
+            value={searchTerm}
+            onChangeText={(word) => setSearchTerm(word)}
             placeholder="Search for a word"
           />
           <TouchableOpacity style={styles.searchBtn} onPress={handleClick}>
