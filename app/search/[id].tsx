@@ -1,37 +1,21 @@
 import {
   View,
   FlatList,
-  TextInput,
   TouchableOpacity,
   Text,
-  Image,
   SafeAreaView,
   ScrollView,
-  Alert,
-  Pressable,
 } from "react-native";
 import { Colors, Shadow, Sizes } from "../../constants/theme";
-import Icons from "../../constants/icons";
 import styles from "../../styles/style";
-import icons from "../../constants/icons";
 import { useRouter, Stack, useGlobalSearchParams } from "expo-router";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import RecommendedWord from "../../components/search/recomendedWord";
-const Word = ({ searchTerm, setSearchTerm, handleClick }) => {
+
+const Word = () => {
   const router = useRouter();
   const params = useGlobalSearchParams();
-
-  //   { id: "key" },
-  //   { id: "5" },
-  //   { id: "3" },
-  //   { id: "4" },
-  //   { id: "9" },
-  //   { id: "8" },
-  //   { id: "7" },
-  //   { id: "6" },
-  //   { id: "6a" },
-  //   { id: "6s" },
 
   const [searchResult, setSearResult] = useState([]);
   const [searchLoader, setSearchLoader] = useState(false);
@@ -80,16 +64,6 @@ const Word = ({ searchTerm, setSearchTerm, handleClick }) => {
                 style={[styles.wordContainer, Shadow.shadowSmall]}
                 onPress={() => {
                   router.push(`/search/${item.word}`);
-                }}
-                onLongPress={() => {
-                  Alert.alert("WordWise", "Do you want to add this word?", [
-                    {
-                      text: "Cancel",
-                      onPress: () => console.log("Cancel Pressed"),
-                      style: "cancel",
-                    },
-                    { text: "OK", onPress: () => console.log("OK Pressed") },
-                  ]);
                 }}
               >
                 <RecommendedWord word={item.word} />

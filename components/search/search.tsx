@@ -7,7 +7,6 @@ import {
   Alert,
 } from "react-native";
 import { Colors, Shadow } from "../../constants/theme";
-import Icons from "../../constants/icons";
 import styles from "../../styles/style";
 import icons from "../../constants/icons";
 import { useRouter } from "expo-router";

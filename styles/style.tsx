@@ -73,7 +73,6 @@ const styles = StyleSheet.create({
     borderRadius: Sizes.medium,
   },
   searchInput: {
-    // fontFamily: FONT.regular,
     width: "100%",
     height: "100%",
     paddingHorizontal: Sizes.medium,
