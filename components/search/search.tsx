@@ -29,6 +29,7 @@ const Search = ({ searchTerm, setSearchTerm, handleClick }: Props) => {
           <TextInput
             style={styles.searchInput}
             value={searchTerm}
+            autoFocus={true}
             onChangeText={(word) => setSearchTerm(word)}
             placeholder="Search for a word"
           />

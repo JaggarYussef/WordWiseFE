@@ -12,7 +12,7 @@ const styles = StyleSheet.create({
     color: Colors.secondary,
   },
   welcomeMessage: {
-    // fontFamily: FONT.bold,
+    fontFamily: "NSLight",
     fontSize: Sizes.xLarge,
     color: Colors.primary,
     marginTop: 2,
@@ -40,6 +40,25 @@ const styles = StyleSheet.create({
     width: "80%",
     borderRadius: Sizes.medium,
     marginBottom: Sizes.xSmall,
+  },
+
+  wordText: {
+    fontFamily: "NSBold",
+    fontSize: Sizes.xLarge,
+    color: Colors.primary,
+    alignSelf: "right",
+  },
+
+  phoneticText: {
+    fontFamily: "NSMedium",
+    fontSize: Sizes.large,
+    color: Colors.primary,
+  },
+
+  meaningText: {
+    fontFamily: "NSLight",
+    fontSize: Sizes.medium,
+    color: Colors.primary,
   },
 
   recommendedCard: {
