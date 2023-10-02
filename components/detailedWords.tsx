@@ -9,8 +9,6 @@ interface Props {
 }
 
 const DetailedWord = ({ data }: Props) => {
-  console.log("this data inside detailed word", data);
-
   let word = "";
   let phonetic = "";
   let meaning = "";
@@ -22,20 +20,29 @@ const DetailedWord = ({ data }: Props) => {
     meaning = data[0].meanings[0].definitions[0].definition;
   }
 
-  const handlePress = async () => {
+  const handlePress = () => {
     console.log("thos", {
       word: word,
       phonetic: phonetic,
       meaning: meaning,
     });
 
-    try {
-      await axios.post("localhost:4000/api/word", {
-        word: word,
-        phonetic: phonetic,
-        meaning: meaning,
-      });
-    } catch (error) {}
+    const postRequest = async () => {
+      console.log("this is post request");
+
+      try {
+        const response = await axios.post("http://localhost:8080/api/words", {
+          word: word,
+          phonetic: phonetic,
+          meaning: meaning,
+        });
+
+        console.log("this is reresponse", response);
+      } catch (error) {
+        console.log("this is error", error);
+      }
+    };
+    postRequest();
   };
 
   return (

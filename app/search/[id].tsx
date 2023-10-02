@@ -5,7 +5,6 @@ import {
   Text,
   SafeAreaView,
   ScrollView,
-  BackHandler,
 } from "react-native";
 import { Colors, Shadow, Sizes } from "../../constants/theme";
 import styles from "../../styles/style";
@@ -28,7 +27,7 @@ const Word = () => {
   const [wordDetails, setWordDetails] = useState([]);
 
   const bottomSheetRef = useRef<BottomSheet>(null);
-  const snapPoints = useMemo(() => ["25%", "35%"], []);
+  const snapPoints = useMemo(() => ["25%", "25%"], []);
   const handleSheetChanges = useCallback((index: number) => {
     bottomSheetRef.current?.snapToIndex(index);
     setOpenSheet(true);
@@ -94,13 +93,14 @@ const Word = () => {
                 <TouchableOpacity
                   style={[styles.wordContainer, Shadow.shadowSmall]}
                   onLongPress={() => {
+                    setOpenSheet(true);
                     handleSheetChanges(0);
                     console.log("item", item.word);
 
                     setSelectedWord(item.word);
                   }}
                   onPress={() => {
-                    router.push(`/search/${item.word}`);
+                    // router.push(`/search/${item.word}`);
                   }}
                 >
                   <RecommendedWord word={item.word} />
