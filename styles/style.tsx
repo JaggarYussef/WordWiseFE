@@ -3,8 +3,10 @@ import { Sizes, Colors } from "../constants/theme";
 const styles = StyleSheet.create({
   container: {
     width: "100%",
+    margin: "auto",
     alignContent: "center",
     justifyContent: "center",
+    alignItems: "center",
   },
   userName: {
     // fontFamily: FONT.regular,
@@ -77,7 +79,7 @@ const styles = StyleSheet.create({
     alignSelf: "center",
     backgroundColor: Colors.secondary,
     width: "80%",
-    height: 500,
+    height: 200,
     padding: 16,
     borderRadius: Sizes.medium,
   },

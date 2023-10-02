@@ -11,20 +11,36 @@ interface Props {
 const DetailedWord = ({ data }: Props) => {
   console.log("this data inside detailed word", data);
 
-  const [word, setWord] = useState("");
-  const [phonetic, setPhonetic] = useState("");
-  const [meaning, setMeaning] = useState("");
+  let word = "";
+  let phonetic = "";
+  let meaning = "";
+
   if (data.length !== 0) {
     // const word = data[0].word;
-    setWord(data[0].word);
-    setPhonetic(data[0].phonetics[0].text);
-    setMeaning(data[0].meanings[0].definitions[0].definition);
+    word = data[0].word;
+    phonetic = data[0].phonetics[0].text;
+    meaning = data[0].meanings[0].definitions[0].definition;
   }
 
-  console.log("this word, phonetic, meaning", word, phonetic, meaning);
+  const handlePress = async () => {
+    console.log("thos", {
+      word: word,
+      phonetic: phonetic,
+      meaning: meaning,
+    });
+
+    try {
+      await axios.post("localhost:4000/api/word", {
+        word: word,
+        phonetic: phonetic,
+        meaning: meaning,
+      });
+    } catch (error) {}
+  };
+
   return (
     <View>
-      <Pressable>
+      <Pressable onPress={handlePress}>
         <Image source={icons.heart} resizeMode="contain" />
       </Pressable>
       <View>
