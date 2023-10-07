@@ -7,6 +7,8 @@ interface Props {
 }
 
 const RecommendedWord = ({ word }: Props) => {
+  console.log("recommended word is called");
+
   return (
     <View>
       <View style={styles.recommendedCard}>

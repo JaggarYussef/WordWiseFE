@@ -31,11 +31,19 @@ const DetailedWord = ({ data }: Props) => {
       console.log("this is post request");
 
       try {
-        const response = await axios.post("http://localhost:8080/api/words", {
-          word: word,
-          phonetic: phonetic,
-          meaning: meaning,
-        });
+        const response = await axios.post(
+          "http://localhost:8080/api/words",
+          {
+            word: word,
+            phonetic: phonetic,
+            meaning: meaning,
+          },
+          {
+            headers: {
+              "Content-Type": "application/json",
+            },
+          }
+        );
 
         console.log("this is reresponse", response);
       } catch (error) {

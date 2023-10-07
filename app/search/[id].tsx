@@ -27,7 +27,7 @@ const Word = () => {
   const [wordDetails, setWordDetails] = useState([]);
 
   const bottomSheetRef = useRef<BottomSheet>(null);
-  const snapPoints = useMemo(() => ["25%", "25%"], []);
+  const snapPoints = useMemo(() => ["50%", "50%"], []);
   const handleSheetChanges = useCallback((index: number) => {
     bottomSheetRef.current?.snapToIndex(index);
     setOpenSheet(true);
@@ -69,6 +69,7 @@ const Word = () => {
       fetchDetails();
     }
   }, [selectedWord]);
+  console.log("searchResults", searchResult);
 
   return (
     <SafeAreaView style={{ flex: 1 }}>
@@ -100,7 +101,7 @@ const Word = () => {
                     setSelectedWord(item.word);
                   }}
                   onPress={() => {
-                    // router.push(`/search/${item.word}`);
+                    router.push(`/search/${item.word}`);
                   }}
                 >
                   <RecommendedWord word={item.word} />

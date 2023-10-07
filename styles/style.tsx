@@ -21,6 +21,7 @@ const styles = StyleSheet.create({
   },
 
   wordContainer: {
+    paddingTop: Sizes.xxLarge,
     flex: 1,
     alignItems: "center",
     justifyContent: "center",
