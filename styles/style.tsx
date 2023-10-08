@@ -65,7 +65,7 @@ const styles = StyleSheet.create({
     alignItems: "flex-start",
     // justifyContent: "flex-start",
     marginTop: Sizes.medium,
-    backgroundColor: Colors.primary,
+    // backgroundColor: Colors.primary,
     width: "80%",
     borderRadius: Sizes.medium,
     marginBottom: Sizes.xxLarge,
@@ -93,7 +93,7 @@ const styles = StyleSheet.create({
   recommendedCard: {
     flex: 0,
     backgroundColor: Colors.secondary,
-    minWidth: 400,
+    minWidth: 200,
     minHeight: 200,
     justifyContent: "center",
     alignItems: "center",
