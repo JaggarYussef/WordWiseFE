@@ -9,8 +9,6 @@ interface Props {
 }
 
 const SavedWord = ({ word, phonetic, meaning }: Props) => {
-  console.log("recommended word is called");
-
   return (
     <View>
       <View style={styles.recommendedCard}>

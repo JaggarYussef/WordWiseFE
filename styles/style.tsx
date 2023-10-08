@@ -7,6 +7,7 @@ const styles = StyleSheet.create({
     alignContent: "center",
     justifyContent: "center",
     alignItems: "center",
+    backgroundColor: Colors.primary,
   },
   userName: {
     // fontFamily: FONT.regular,
@@ -29,10 +30,24 @@ const styles = StyleSheet.create({
     alignSelf: "center",
     backgroundColor: Colors.secondary,
     width: "80%",
-    height: 100,
     borderRadius: Sizes.medium,
     marginBottom: Sizes.xSmall,
   },
+
+  tempWordContainer: {
+    paddingTop: Sizes.xxLarge,
+    flex: 1,
+    alignItems: "center",
+    justifyContent: "center",
+    marginTop: Sizes.large,
+    alignSelf: "center",
+    backgroundColor: Colors.secondary,
+    width: "80%",
+    borderRadius: Sizes.medium,
+    flexDirection: "column",
+    marginBottom: Sizes.xSmall,
+  },
+
   showCasedWord: {
     flex: 2,
     alignItems: "center",
@@ -43,6 +58,17 @@ const styles = StyleSheet.create({
     width: "80%",
     borderRadius: Sizes.medium,
     marginBottom: Sizes.xSmall,
+  },
+  flatListContainer: {
+    columnGap: Sizes.medium,
+    flex: 1,
+    alignItems: "flex-start",
+    justifyContent: "flex-start",
+    marginTop: Sizes.large,
+    backgroundColor: Colors.primary,
+    width: "100%",
+    borderRadius: Sizes.medium,
+    marginBottom: Sizes.xxLarge,
   },
 
   wordText: {
@@ -65,9 +91,10 @@ const styles = StyleSheet.create({
   },
 
   recommendedCard: {
+    flex: 0,
     backgroundColor: Colors.secondary,
-    width: "90%",
-    height: 100,
+    minWidth: 400,
+    minHeight: 200,
     justifyContent: "center",
     alignItems: "center",
     borderRadius: Sizes.medium,
@@ -115,17 +142,6 @@ const styles = StyleSheet.create({
     width: "100%",
     marginTop: Sizes.medium,
   },
-  //   tab: (activeJobType, item) => ({
-  //     paddingVertical: Sizes.small / 2,
-  //     paddingHorizontal: Sizes.small,
-  //     borderRadius: Sizes.medium,
-  //     borderWidth: 1,
-  //     borderColor: activeJobType === item ? Colors.secondary : Colors.gray2,
-  //   }),
-  //   tabText: (activeJobType, item) => ({
-  //     fontFamily: FONT.medium,
-  //     color: activeJobType === item ? Colors.secondary : Colors.gray2,
-  //   }),
 });
 
 export default styles;

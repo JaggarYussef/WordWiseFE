@@ -19,9 +19,6 @@ interface Props {
 }
 
 const Search = ({ searchTerm, setSearchTerm, handleClick }: Props) => {
-  const router = useRouter();
-  console.log("searchTerm", searchTerm);
-
   return (
     <View style={styles.container}>
       <View style={[styles.searchContainer, Shadow.shadowSmall]}>

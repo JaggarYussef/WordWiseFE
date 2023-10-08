@@ -1,11 +1,11 @@
 import {
   View,
-  FlatList,
   TouchableOpacity,
   Text,
   SafeAreaView,
   ScrollView,
 } from "react-native";
+import { FlatList } from "react-native-gesture-handler";
 import { Colors, Shadow, Sizes } from "../../constants/theme";
 import styles from "../../styles/style";
 import { useRouter, Stack, useGlobalSearchParams } from "expo-router";
@@ -14,6 +14,9 @@ import axios from "axios";
 import RecommendedWord from "../../components/search/recomendedWord";
 import BottomSheet from "@gorhom/bottom-sheet";
 import DetailedWord from "../../components/detailedWords";
+
+//TODO
+// WERE PASSSING WORDDETAILS AS OBJECT TO DETAILED WORDS
 
 const Word = () => {
   const router = useRouter();
@@ -27,10 +30,11 @@ const Word = () => {
   const [wordDetails, setWordDetails] = useState([]);
 
   const bottomSheetRef = useRef<BottomSheet>(null);
-  const snapPoints = useMemo(() => ["50%", "50%"], []);
+  const snapPoints = useMemo(() => ["50%", "1%"], []);
+
   const handleSheetChanges = useCallback((index: number) => {
     bottomSheetRef.current?.snapToIndex(index);
-    setOpenSheet(true);
+    // setOpenSheet(true);
     console.log("handleSheetChanges ", index);
   }, []);
 
@@ -39,7 +43,6 @@ const Word = () => {
       const url = `https://api.dictionaryapi.dev/api/v2/entries/en/${selectedWord}`;
       const response = await axios.get(url);
       const responseData = response.data;
-      console.log("CALED");
 
       setWordDetails(responseData);
     } catch (error) {
@@ -63,13 +66,14 @@ const Word = () => {
     }
   };
 
+  console.log("wordDetails", wordDetails);
+
   useEffect(() => {
     fetchWords();
     if (selectedWord) {
       fetchDetails();
     }
   }, [selectedWord]);
-  console.log("searchResults", searchResult);
 
   return (
     <SafeAreaView style={{ flex: 1 }}>
@@ -81,36 +85,33 @@ const Word = () => {
         }}
       />
 
-      <View>
-        <ScrollView showsVerticalScrollIndicator={false}>
-          <View style={{ flex: 1, padding: Sizes.medium }}>
-            <View style={[styles.showCasedWord, Shadow.shadowSmall]}>
-              <Text style={styles.welcomeMessage}>{params.id}</Text>
-            </View>
+      <View style={{ flex: 1, padding: Sizes.medium }}>
+        <View style={[styles.showCasedWord, Shadow.shadowSmall]}>
+          <Text style={styles.welcomeMessage}>{params.id}</Text>
+        </View>
 
-            <FlatList
-              data={searchResult}
-              renderItem={({ item }) => (
-                <TouchableOpacity
-                  style={[styles.wordContainer, Shadow.shadowSmall]}
-                  onLongPress={() => {
-                    setOpenSheet(true);
-                    handleSheetChanges(0);
-                    console.log("item", item.word);
+        <FlatList
+          data={searchResult}
+          renderItem={({ item }) => (
+            <TouchableOpacity
+              style={[styles.tempWordContainer, Shadow.shadowSmall]}
+              onLongPress={() => {
+                setOpenSheet(true);
+                handleSheetChanges(0);
 
-                    setSelectedWord(item.word);
-                  }}
-                  onPress={() => {
-                    router.push(`/search/${item.word}`);
-                  }}
-                >
-                  <RecommendedWord word={item.word} />
-                </TouchableOpacity>
-              )}
-              keyExtractor={(item) => item.score}
-            />
-          </View>
-        </ScrollView>
+                setSelectedWord(item.word);
+              }}
+              onPress={() => {
+                router.replace(`/search/${item.word}`);
+              }}
+            >
+              <RecommendedWord word={item.word} />
+            </TouchableOpacity>
+          )}
+          keyExtractor={(item) => item.score}
+          contentContainerStyle={styles.flatListContainer}
+          horizontal
+        />
       </View>
 
       <View style={styles.container}>

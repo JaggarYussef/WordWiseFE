@@ -27,8 +27,6 @@ const Home = () => {
     try {
       const results = await axios.get("http://localhost:8080/api/words");
       setLikedWords(results.data);
-      console.log("saved words result", results.data);
-      console.log("words in LikedWords", likedWord);
     } catch (error) {
       console.log("Error fetching saved words", error);
     }
@@ -41,7 +39,7 @@ const Home = () => {
   const [searchTerm, setSearchTerm] = useState("");
   return (
     <SafeAreaView style={{ flex: 1 }}>
-      <Stack.Screen options={{}} />
+      <Stack.Screen />
 
       <ScrollView showsVerticalScrollIndicator={false}>
         <View style={{ flex: 1, padding: Sizes.medium }}>
@@ -72,6 +70,7 @@ const Home = () => {
             );
           }}
           keyExtractor={(item) => item.id.toString()}
+          contentContainerStyle={{ flex: 1 }}
         ></FlatList>
       </ScrollView>
     </SafeAreaView>

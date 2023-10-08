@@ -1,8 +1,11 @@
 import { View, Text, Pressable, Image } from "react-native";
 import styles from "../styles/style";
 import axios from "axios";
-import { useEffect, useState } from "react";
 import icons from "../constants/icons";
+
+//TODO
+// The DataMuse api doesn't always return valid word therefore it can can cause the dictiionary api
+// to return no phonetic and or meaning for that word. This can cause the app to crash.
 
 interface Props {
   data: string;
@@ -57,6 +60,7 @@ const DetailedWord = ({ data }: Props) => {
     <View>
       <Pressable onPress={handlePress}>
         <Image source={icons.heart} resizeMode="contain" />
+        <Image source={icons.share} resizeMode="contain" />
       </Pressable>
       <View>
         <Text style={styles.wordText}>{word}</Text>
