@@ -142,6 +142,9 @@ const styles = StyleSheet.create({
     width: "100%",
     marginTop: Sizes.medium,
   },
-});
 
+  detailedWordContainer: {
+    flexDirection: "column",
+  },
+});
 export default styles;

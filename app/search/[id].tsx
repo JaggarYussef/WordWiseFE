@@ -35,6 +35,10 @@ const Word = () => {
   const [selectedWord, setSelectedWord] = useState(null);
   const [wordDetails, setWordDetails] = useState([]);
 
+  const [word, setWord] = useState("");
+  const [phonetic, setPhonetic] = useState("");
+  const [meaning, setMeaning] = useState("");
+
   const bottomSheetRef = useRef<BottomSheet>(null);
   const snapPoints = useMemo(() => ["50%", "1%"], []);
 
@@ -128,7 +132,11 @@ const Word = () => {
           enablePanDownToClose={true}
           onClose={() => setOpenSheet(false)}
         >
-          <DetailedWord data={wordDetails} />
+          <DetailedWord
+            word={wordDetails[0]?.word}
+            phonetic={wordDetails[0]?.phonetics[0].text}
+            meaning={wordDetails[0]?.meanings[0].definitions[0].definition}
+          />
         </BottomSheet>
       </View>
     </SafeAreaView>

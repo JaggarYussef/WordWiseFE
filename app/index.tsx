@@ -68,26 +68,27 @@ const Home = () => {
         </View>
         <FlatList
           data={likedWord}
-          renderItem={({ item }) => {
-            console.log("this is single item,", item.word);
-            return (
-              <TouchableOpacity
-                style={[styles.wordContainer, Shadow.shadowSmall]}
-                onLongPress={() => {
-                  handleSheetChanges(0);
-                  setSelectedWord(item.word);
-                  setPhonetic(item.phonetic);
-                  setMeaning(item.meaning);
-                }}
-              >
-                <SavedWord
-                  word={item.word}
-                  phonetic={item.phonetic}
-                  meaning={item.meaning}
-                />
-              </TouchableOpacity>
-            );
-          }}
+          renderItem={({ item }) => (
+            <TouchableOpacity
+              style={[styles.wordContainer, Shadow.shadowSmall]}
+              onPress={() => {
+                console.log("longpressed");
+
+                handleSheetChanges(0);
+                setSelectedWord(item.word);
+                setPhonetic(item.phonetic);
+                setMeaning(item.meaning);
+
+                console.log("meaning and shit", meaning, phonetic, selectWord);
+              }}
+            >
+              <SavedWord
+                word={item.word}
+                phonetic={item.phonetic}
+                meaning={item.meaning}
+              />
+            </TouchableOpacity>
+          )}
           keyExtractor={(item) => item.id.toString()}
           contentContainerStyle={{ flex: 1 }}
         ></FlatList>
@@ -99,7 +100,11 @@ const Home = () => {
           snapPoints={snapPoints}
           enablePanDownToClose={true}
         >
-          <DetailedWord data={selectWord} />
+          <DetailedWord
+            word={selectWord}
+            phonetic={phonetic}
+            meaning={meaning}
+          />
         </BottomSheet>
       </View>
     </SafeAreaView>
