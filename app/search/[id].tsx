@@ -14,6 +14,7 @@ import axios from "axios";
 import RecommendedWord from "../../components/search/recomendedWord";
 import BottomSheet from "@gorhom/bottom-sheet";
 import DetailedWord from "../../components/detailedWords";
+import { generateKey } from "../utils/helpers";
 
 //TODO
 // WERE PASSSING WORDDETAILS AS OBJECT TO DETAILED WORDS
@@ -108,7 +109,7 @@ const Word = () => {
               <RecommendedWord word={item.word} />
             </TouchableOpacity>
           )}
-          keyExtractor={(item) => item.score}
+          keyExtractor={(item) => generateKey(item.score)}
           contentContainerStyle={styles.flatListContainer}
           horizontal
         />
