@@ -35,10 +35,6 @@ const Word = () => {
   const [selectedWord, setSelectedWord] = useState(null);
   const [wordDetails, setWordDetails] = useState([]);
 
-  const [word, setWord] = useState("");
-  const [phonetic, setPhonetic] = useState("");
-  const [meaning, setMeaning] = useState("");
-
   const bottomSheetRef = useRef<BottomSheet>(null);
   const snapPoints = useMemo(() => ["50%", "1%"], []);
 

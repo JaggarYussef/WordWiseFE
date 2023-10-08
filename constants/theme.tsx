@@ -15,6 +15,7 @@ const Sizes = {
   large: 20,
   xLarge: 25,
   xxLarge: 30,
+  xxxLarge: 40,
 };
 
 const Shadow = {

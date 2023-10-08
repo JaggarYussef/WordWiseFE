@@ -48,11 +48,11 @@ const DetailedWord = ({ word, phonetic, meaning }: Props) => {
   };
 
   return (
-    <View>
-      <View style={{ flexDirection: "row" }}>
+    <View style={styles.detailedWordContainer}>
+      <View style={styles.detailedWordHeader}>
         <Text style={styles.wordText}>{word}</Text>
 
-        <Pressable onPress={handlePress}>
+        <Pressable style={styles.detailedHeartImage} onPress={handlePress}>
           <Image source={icons.heart} resizeMode="contain" />
         </Pressable>
       </View>

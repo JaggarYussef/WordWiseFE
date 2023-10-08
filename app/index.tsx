@@ -55,43 +55,52 @@ const Home = () => {
       <Stack.Screen />
 
       <ScrollView showsVerticalScrollIndicator={false}>
-        <View style={{ flex: 1, padding: Sizes.medium }}>
-          <Search
-            searchTerm={searchTerm}
-            setSearchTerm={setSearchTerm}
-            handleClick={() => {
-              if (searchTerm) {
-                router.push(`/search/${searchTerm}`);
-              }
-            }}
-          />
-        </View>
-        <FlatList
-          data={likedWord}
-          renderItem={({ item }) => (
-            <TouchableOpacity
-              style={[styles.wordContainer, Shadow.shadowSmall]}
-              onPress={() => {
-                console.log("longpressed");
-
-                handleSheetChanges(0);
-                setSelectedWord(item.word);
-                setPhonetic(item.phonetic);
-                setMeaning(item.meaning);
-
-                console.log("meaning and shit", meaning, phonetic, selectWord);
+        <View style={{ flex: 1 }}>
+          <View style={{ padding: Sizes.medium }}>
+            <Search
+              searchTerm={searchTerm}
+              setSearchTerm={setSearchTerm}
+              handleClick={() => {
+                if (searchTerm) {
+                  router.push(`/search/${searchTerm}`);
+                }
               }}
-            >
-              <SavedWord
-                word={item.word}
-                phonetic={item.phonetic}
-                meaning={item.meaning}
-              />
-            </TouchableOpacity>
-          )}
-          keyExtractor={(item) => item.id.toString()}
-          contentContainerStyle={{ flex: 1 }}
-        ></FlatList>
+            />
+          </View>
+
+          <View style={{ flex: 1, padding: Sizes.medium }}>
+            <FlatList
+              data={likedWord}
+              renderItem={({ item }) => (
+                <TouchableOpacity
+                  style={[styles.wordContainer, Shadow.shadowSmall]}
+                  onPress={() => {
+                    console.log("longpressed");
+                    handleSheetChanges(0);
+                    setSelectedWord(item.word);
+                    setPhonetic(item.phonetic);
+                    setMeaning(item.meaning);
+
+                    console.log(
+                      "meaning and shit",
+                      meaning,
+                      phonetic,
+                      selectWord
+                    );
+                  }}
+                >
+                  <SavedWord
+                    word={item.word}
+                    phonetic={item.phonetic}
+                    meaning={item.meaning}
+                  />
+                </TouchableOpacity>
+              )}
+              keyExtractor={(item) => item.id.toString()}
+              contentContainerStyle={{ flexGrow: 1 }}
+            ></FlatList>
+          </View>
+        </View>
       </ScrollView>
       <View>
         <BottomSheet
