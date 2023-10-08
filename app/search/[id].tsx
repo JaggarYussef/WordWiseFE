@@ -19,11 +19,16 @@ import { generateKey } from "../utils/helpers";
 //TODO
 // WERE PASSSING WORDDETAILS AS OBJECT TO DETAILED WORDS
 
+interface FetchWords {
+  word: string;
+  score: number;
+}
+
 const Word = () => {
   const router = useRouter();
   const params = useGlobalSearchParams();
 
-  const [searchResult, setSearResult] = useState([]);
+  const [searchResult, setSearResult] = useState<Array<FetchWords>>([]);
   const [searchLoader, setSearchLoader] = useState(false);
   const [searchError, setSearchError] = useState<Error | null>(null);
   const [isSheetOpen, setOpenSheet] = useState(false);
