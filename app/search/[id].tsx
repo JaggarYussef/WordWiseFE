@@ -1,10 +1,4 @@
-import {
-  View,
-  TouchableOpacity,
-  Text,
-  SafeAreaView,
-  ScrollView,
-} from "react-native";
+import { View, TouchableOpacity, Text, SafeAreaView } from "react-native";
 import { FlatList } from "react-native-gesture-handler";
 import { Colors, Shadow, Sizes } from "../../constants/theme";
 import styles from "../../styles/style";
@@ -130,8 +124,9 @@ const Word = () => {
         >
           <DetailedWord
             word={wordDetails[0]?.word}
-            phonetic={wordDetails[0]?.phonetics[0].text}
-            meaning={wordDetails[0]?.meanings[0].definitions[0].definition}
+            phonetic={wordDetails[0]?.phonetics[0]?.text}
+            meaning={wordDetails[0]?.meanings[0]?.definitions[0].definition}
+            likeable={true}
           />
         </BottomSheet>
       </View>

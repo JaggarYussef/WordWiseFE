@@ -1,9 +1,6 @@
 import { Stack } from "expo-router";
 import * as Font from "expo-font";
-import * as SplashScreen from "expo-splash-screen";
 import { Sizes, Colors } from "../constants/theme";
-import { useCallback, useEffect } from "react";
-import { View } from "react-native";
 
 const Layout = () => {
   const loadFonts = async () => {
@@ -15,16 +12,6 @@ const Layout = () => {
   };
   loadFonts();
 
-  // const onLayoutRootView = useCallback(async () => {
-  //   if (fontsLoaded || fontError) {
-  //     await SplashScreen.hideAsync();
-  //   }
-  // }, [fontsLoaded, fontError]);
-
-  // if (!fontsLoaded && !fontError) {
-  //   return null;
-  // }
-
   return (
     <Stack
       screenOptions={{
@@ -34,9 +21,7 @@ const Layout = () => {
         headerTitleAlign: "center",
         headerTitleStyle: { fontFamily: "NSBold", fontSize: Sizes.xxLarge },
       }}
-    >
-      {/* <View onLayout={}> </View> */}
-    </Stack>
+    ></Stack>
   );
 };
 

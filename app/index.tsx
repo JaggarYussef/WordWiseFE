@@ -113,6 +113,7 @@ const Home = () => {
             word={selectWord}
             phonetic={phonetic}
             meaning={meaning}
+            likeable={false}
           />
         </BottomSheet>
       </View>

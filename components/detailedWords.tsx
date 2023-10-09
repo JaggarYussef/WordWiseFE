@@ -12,9 +12,10 @@ interface Props {
   word: string;
   phonetic: string;
   meaning: string;
+  likeable: boolean;
 }
 
-const DetailedWord = ({ word, phonetic, meaning }: Props) => {
+const DetailedWord = ({ word, phonetic, meaning, likeable }: Props) => {
   console.log("thos", {
     word: word,
     phonetic: phonetic,
@@ -52,9 +53,11 @@ const DetailedWord = ({ word, phonetic, meaning }: Props) => {
       <View style={styles.detailedWordHeader}>
         <Text style={styles.wordText}>{word}</Text>
 
-        <Pressable style={styles.detailedHeartImage} onPress={handlePress}>
-          <Image source={icons.heart} resizeMode="contain" />
-        </Pressable>
+        {likeable && (
+          <Pressable style={styles.detailedHeartImage} onPress={handlePress}>
+            <Image source={icons.heart} resizeMode="contain" />
+          </Pressable>
+        )}
       </View>
 
       <View>
